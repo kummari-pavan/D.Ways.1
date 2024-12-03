@@ -18,6 +18,7 @@ import ShoppingListing from './pages/shopping-view/listing'
 import ShoppingCheckout from './pages/shopping-view/checkout'
 import ShoppingAccount from './pages/shopping-view/account'
 import CheckAuth from './components/common/check-auth'
+import UnauthPage from './pages/unauth-page'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -57,6 +58,7 @@ function App() {
               <Route path="account" element={<ShoppingAccount/>}/>
             </Route>
             <Route path='*' element={<NotFound/>}/>
+            <Route path='/unauth-page' element={<UnauthPage/>}/>
          </Routes>
 
     </div>
