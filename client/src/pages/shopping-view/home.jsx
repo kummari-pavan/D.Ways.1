@@ -2,6 +2,9 @@ import { Button } from "@/components/ui/button";
 import bannerOne from "../../assets/banner-1.webp";
 import bannerTwo from "../../assets/banner-2.webp";
 import bannerThree from "../../assets/banner-3.webp";
+import womenpic from "../../assets/women-logo.webp";
+import menpic from "../../assets/men-logo1.webp";
+import kidspic from "../../assets/kids-logo.webp";
 import {
   Airplay,
   BabyIcon,
@@ -31,14 +34,20 @@ import { useToast } from "@/components/ui/use-toast";
 import ProductDetailsDialog from "@/components/shopping-view/product-details";
 import { getFeatureImages } from "@/store/common-slice";
 
+// const categoriesWithIcon = [
+//   { id: "men", label: "Men", icon: ShirtIcon },
+//   { id: "women", label: "Women", icon: CloudLightning },
+//   { id: "kids", label: "Kids", icon: BabyIcon },
+//   { id: "accessories", label: "Accessories", icon: WatchIcon },
+//   { id: "footwear", label: "Footwear", icon: UmbrellaIcon },
+// ];
 const categoriesWithIcon = [
-  { id: "men", label: "Men", icon: ShirtIcon },
-  { id: "women", label: "Women", icon: CloudLightning },
-  { id: "kids", label: "Kids", icon: BabyIcon },
-  { id: "accessories", label: "Accessories", icon: WatchIcon },
-  { id: "footwear", label: "Footwear", icon: UmbrellaIcon },
+  { id: "men", label: "Men", image: menpic },
+  { id: "women", label: "Women", image: womenpic },
+  { id: "kids", label: "Kids", image: kidspic },
+  { id: "accessories", label: "Accessories", image: menpic },
+  { id: "footwear", label: "Footwear", image: menpic },
 ];
-
 const brandsWithIcon = [
   { id: "nike", label: "Nike", icon: Shirt },
   { id: "adidas", label: "Adidas", icon: WashingMachine },
@@ -128,6 +137,7 @@ function ShoppingHome() {
               <img
                 src={slide?.image}
                 key={index}
+                alt="home-image"
                 className={`${
                   index === currentSlide ? "opacity-100" : "opacity-0"
                 } absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000`}
@@ -174,8 +184,13 @@ function ShoppingHome() {
                 }
                 className="cursor-pointer hover:shadow-lg transition-shadow"
               >
-                <CardContent className="flex flex-col items-center justify-center p-6">
-                  <categoryItem.icon className="w-12 h-12 mb-4 text-primary" />
+                <CardContent className="flex flex-col items-center justify-center p-2">
+                  {/* <categoryItem.icon className="w-12 h-12 mb-4 text-primary" /> */}
+                  <img
+                  src={categoryItem.image}
+                  alt={`${categoryItem.label} category`}
+                  className="w-50 h-25 mb-4"
+                />
                   <span className="font-bold">{categoryItem.label}</span>
                 </CardContent>
               </Card>

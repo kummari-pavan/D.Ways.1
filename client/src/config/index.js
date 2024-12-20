@@ -142,6 +142,11 @@ export const registerFormControls = [
       label: "Search",
       path: "/shop/search",
     },
+    {
+      id: "customize",
+      label: "Customize +",
+      path: "/shop/customize",
+    }
   ];
   
   export const categoryOptionsMap = {
@@ -150,6 +155,7 @@ export const registerFormControls = [
     kids: "Kids",
     accessories: "Accessories",
     footwear: "Footwear",
+    customize:"Customize"
   };
   
   export const brandOptionsMap = {

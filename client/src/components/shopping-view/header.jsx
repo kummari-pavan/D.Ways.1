@@ -1,4 +1,4 @@
-import { HousePlug, LogOut, Menu, ShoppingCart, UserCog } from "lucide-react";
+import { Heart,HousePlug, LogOut, Menu, ShoppingCart, UserCog } from "lucide-react";
 import {
   Link,
   useLocation,
@@ -54,8 +54,11 @@ function MenuItems() {
       {shoppingViewHeaderMenuItems.map((menuItem) => (
         <Label
           onClick={() => handleNavigate(menuItem)}
-          className="text-sm font-medium cursor-pointer"
-          key={menuItem.id}
+          className={`text-sm font-medium cursor-pointer ${
+            menuItem.label === "Customize +"
+              ? "bg-black text-white px-4 py-2 rounded-md"
+              : ""
+          }`}
         >
           {menuItem.label}
         </Label>
@@ -83,6 +86,16 @@ function HeaderRightContent() {
 
   return (
     <div className="flex lg:items-center lg:flex-row flex-col gap-4">
+
+      <Button
+        onClick={() => navigate("/shop/wishlist")}
+        variant="outline"
+        size="icon"
+        className="relative"
+        >
+        <Heart className="w-6 h-6 " />
+        <span className="sr-only">Wishlist</span>
+      </Button>
       <Sheet open={openCartSheet} onOpenChange={() => setOpenCartSheet(false)}>
         <Button
           onClick={() => setOpenCartSheet(true)}
@@ -140,7 +153,7 @@ function ShoppingHeader() {
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
         <Link to="/shop/home" className="flex items-center gap-2">
           <HousePlug className="h-6 w-6" />
-          <span className="font-bold">Ecommerce</span>
+          <span className="font-bold">D.Way.1</span>
         </Link>
         <Sheet>
           <SheetTrigger asChild>
@@ -164,6 +177,37 @@ function ShoppingHeader() {
       </div>
     </header>
   );
+
+  // return (
+  //   <header className="fixed top-0 z-50 w-full border-b bg-background">
+  //     <div className="flex h-16 items-center justify-between px-4 md:px-6">
+  //       <Link to="/shop/home" className="flex items-center gap-2">
+  //         <HousePlug className="h-6 w-6" />
+  //         <span className="font-bold">D.Way.1</span>
+  //       </Link>
+  //       <Sheet>
+  //         <SheetTrigger asChild>
+  //           <Button variant="outline" size="icon" className="lg:hidden">
+  //             <Menu className="h-6 w-6" />
+  //             <span className="sr-only">Toggle header menu</span>
+  //           </Button>
+  //         </SheetTrigger>
+  //         <SheetContent side="left" className="w-full max-w-xs">
+  //           <MenuItems />
+  //           <HeaderRightContent />
+  //         </SheetContent>
+  //       </Sheet>
+  //       <div className="hidden lg:block">
+  //         <MenuItems />
+  //       </div>
+  
+  //       <div className="hidden lg:block">
+  //         <HeaderRightContent />
+  //       </div>
+  //     </div>
+  //   </header>
+  // );
+  
 }
 
 export default ShoppingHeader;
